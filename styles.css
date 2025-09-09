@@ -1,3 +1,4 @@
+/* === CONFIGURAÇÕES GLOBAIS E VARIÁVEIS === */
 :root {
     --primary-color: #3498db;  /* Um azul moderno e confiável */
     --dark-bg: #1a1a1a;
@@ -5,6 +6,18 @@
     --text-color: #f4f4f4;
     --heading-font: 'Bebas Neue', sans-serif;
     --body-font: 'Poppins', sans-serif;
+}
+
+/* === KEYFRAMES PARA ANIMAÇÃO DE IMERSÃO === */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 * {
@@ -18,6 +31,7 @@ body {
     background-color: var(--dark-bg);
     color: var(--text-color);
     line-height: 1.6;
+    overflow-x: hidden; /* Previne scroll horizontal causado por animações */
 }
 
 .container {
@@ -26,6 +40,7 @@ body {
     padding: 0 20px;
 }
 
+/* === ESTILOS DE TEXTO E TÍTULOS === */
 h1, h2, h3 {
     font-family: var(--heading-font);
     color: var(--primary-color);
@@ -33,14 +48,21 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: 5rem; /* Aumentado para mais impacto */
     line-height: 1;
+    /* Efeito especial no título principal */
+    background: linear-gradient(45deg, var(--primary-color), #85c1e9);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeInUp 0.8s ease-out; /* Animação aplicada */
 }
 
 h2 {
     font-size: 3rem;
     text-align: center;
     margin-bottom: 40px;
+    animation: fadeInUp 0.8s ease-out; /* Animação aplicada */
 }
 
 h3 {
@@ -54,6 +76,7 @@ a {
     text-decoration: none;
 }
 
+/* === SEÇÃO HERO === */
 .hero {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=2070&auto=format&fit=crop') center center/cover no-repeat;
     padding: 100px 0;
@@ -69,12 +92,16 @@ a {
     font-size: 2.5rem;
     color: var(--text-color);
     margin-top: 10px;
+    animation: fadeInUp 0.8s ease-out 0.2s; /* Delay para aparecer depois do H1 */
+    animation-fill-mode: backwards; /* Garante que o estilo inicial seja aplicado antes da animação */
 }
 
 .hero .description {
     font-size: 1.2rem;
     max-width: 600px;
     margin: 20px auto 30px;
+    animation: fadeInUp 0.8s ease-out 0.4s; /* Delay ainda maior */
+    animation-fill-mode: backwards;
 }
 
 .cta-button {
@@ -87,10 +114,12 @@ a {
     letter-spacing: 1px;
     border-radius: 5px;
     transition: background-color 0.3s, transform 0.3s;
+    animation: fadeInUp 0.8s ease-out 0.6s; /* Animação no botão também */
+    animation-fill-mode: backwards;
 }
 
 .cta-button:hover {
-    background-color: #5dade2; /* Um azul um pouco mais claro no hover */
+    background-color: #5dade2;
     transform: translateY(-3px);
 }
 
@@ -98,9 +127,17 @@ a {
     margin-right: 10px;
 }
 
-#como-funciona {
+/* === SEÇÕES DE CONTEÚDO === */
+#como-funciona, #para-quem-e, .cta-section {
     padding: 80px 0;
+}
+
+#como-funciona {
     background-color: var(--light-bg);
+}
+
+#para-quem-e {
+    background-color: var(--dark-bg);
 }
 
 .steps-container {
@@ -116,7 +153,16 @@ a {
     border-radius: 10px;
     border: 1px solid #444;
     transition: transform 0.3s, box-shadow 0.3s;
+    opacity: 0; /* Inicia transparente para a animação */
+    animation: fadeInUp 0.6s ease-out forwards; /* 'forwards' mantém o estado final */
 }
+
+/* Efeito cascata para os cards */
+.step:nth-child(1) { animation-delay: 0.1s; }
+.step:nth-child(2) { animation-delay: 0.2s; }
+.step:nth-child(3) { animation-delay: 0.3s; }
+.step:nth-child(4) { animation-delay: 0.4s; }
+
 
 .step:hover {
     transform: translateY(-5px);
@@ -129,15 +175,10 @@ a {
     margin-bottom: 20px;
 }
 
-#para-quem-e {
-    padding: 80px 0;
-    background-color: var(--dark-bg);
-}
-
+/* === SEÇÃO FINAL CTA E RODAPÉ === */
 .cta-section {
     background-color: var(--light-bg);
     text-align: center;
-    padding: 80px 0;
 }
 
 .cta-section p {
@@ -153,9 +194,10 @@ footer {
     border-top: 1px solid #333;
 }
 
+/* === MEDIA QUERIES PARA RESPONSIVIDADE === */
 @media(max-width: 768px) {
     h1 {
-        font-size: 3rem;
+        font-size: 3.5rem; /* Ajuste no H1 principal */
     }
     .hero h2 {
         font-size: 1.8rem;
