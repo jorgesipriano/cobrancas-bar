@@ -1,12 +1,10 @@
-/* === CONFIGURAÇÕES GLOBAIS E VARIÁVEIS DE COR === */
 :root {
-    --cor-fundo: #121828; /* Um azul quase preto, muito elegante */
-    --cor-primaria: #25D366; /* Verde do WhatsApp, para familiaridade */
-    --cor-secundaria: #00A9E0; /* Um azul vibrante para detalhes */
-    --cor-texto-principal: #F0F4F8; /* Branco levemente acinzentado */
-    --cor-texto-secundario: #A0AEC0; /* Cinza claro para descrições */
-    --cor-cartao: rgba(30, 41, 59, 0.5); /* Fundo dos cards com transparência */
-    --borda-cartao: rgba(255, 255, 255, 0.1);
+    --primary-color: #3498db;  /* Um azul moderno e confiável */
+    --dark-bg: #1a1a1a;
+    --light-bg: #2c2c2c;
+    --text-color: #f4f4f4;
+    --heading-font: 'Bebas Neue', sans-serif;
+    --body-font: 'Poppins', sans-serif;
 }
 
 * {
@@ -16,161 +14,156 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto-principal);
+    font-family: var(--body-font);
+    background-color: var(--dark-bg);
+    color: var(--text-color);
     line-height: 1.6;
-    overflow-x: hidden; /* Evita scroll horizontal */
-    background-image: 
-        radial-gradient(circle at 15% 50%, var(--cor-secundaria), transparent 25%),
-        radial-gradient(circle at 85% 30%, var(--cor-primaria), transparent 25%);
-    background-attachment: fixed;
 }
 
 .container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 30px;
+    padding: 0 20px;
 }
 
-/* === ESTILO DO CABEÇALHO (HERO SECTION) === */
-.hero {
+h1, h2, h3 {
+    font-family: var(--heading-font);
+    color: var(--primary-color);
+    letter-spacing: 1.5px;
+}
+
+h1 {
+    font-size: 4rem;
+    line-height: 1;
+}
+
+h2 {
+    font-size: 3rem;
     text-align: center;
-    padding: 120px 0;
-    background: linear-gradient(180deg, rgba(18, 24, 40, 0.1) 0%, var(--cor-fundo) 100%);
+    margin-bottom: 40px;
 }
 
-.hero h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 6rem;
-    color: var(--cor-primaria);
-    letter-spacing: 3px;
-    text-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
-    margin-bottom: 0.2rem;
+h3 {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin: 10px 0;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=2070&auto=format&fit=crop') center center/cover no-repeat;
+    padding: 100px 0;
+    text-align: center;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero h2 {
-    font-size: 1.8rem;
-    font-weight: 400;
-    color: var(--cor-texto-principal);
-    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin-top: 10px;
 }
 
 .hero .description {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     max-width: 600px;
-    margin: 0 auto 2.5rem;
-    color: var(--cor-texto-secundario);
+    margin: 20px auto 30px;
 }
 
-/* === BOTÃO DE AÇÃO (CTA) ESTILIZADO === */
 .cta-button {
+    font-family: var(--heading-font);
     display: inline-block;
-    background: linear-gradient(45deg, var(--cor-primaria), #20b058);
-    color: #FFF;
-    padding: 18px 40px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
-    border: none;
+    background-color: var(--primary-color);
+    color: var(--dark-bg);
+    padding: 15px 35px;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .cta-button:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 25px rgba(37, 211, 102, 0.3);
+    background-color: #5dade2; /* Um azul um pouco mais claro no hover */
+    transform: translateY(-3px);
 }
 
-.cta-button .fab.fa-whatsapp {
-    margin-right: 12px;
-    font-size: 1.3rem;
+.cta-button .fab {
+    margin-right: 10px;
 }
 
-/* === SEÇÕES PRINCIPAIS === */
-main section {
+#como-funciona {
     padding: 80px 0;
-    text-align: center;
+    background-color: var(--light-bg);
 }
 
-main section h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 3.5rem;
-    color: var(--cor-texto-principal);
-    margin-bottom: 3rem;
-    position: relative;
-    display: inline-block;
-}
-
-/* Linha decorativa abaixo dos títulos de seção */
-main section h2::after {
-    content: '';
-    position: absolute;
-    width: 60%;
-    height: 3px;
-    background: linear-gradient(90deg, var(--cor-primaria), var(--cor-secundaria));
-    bottom: -10px;
-    left: 20%;
-    border-radius: 2px;
-}
-
-/* === CARDS DE INFORMAÇÃO (EFEITO VIDRO) === */
 .steps-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
-    margin-top: 2rem;
+    text-align: center;
 }
 
 .step {
-    background: var(--cor-cartao);
-    border: 1px solid var(--borda-cartao);
-    padding: 40px 30px;
-    border-radius: 20px;
-    backdrop-filter: blur(10px); /* O famoso efeito de vidro fosco */
-    -webkit-backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    background: var(--dark-bg);
+    padding: 30px 20px;
+    border-radius: 10px;
+    border: 1px solid #444;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .step:hover {
-    transform: translateY(-10px);
-    border-color: var(--cor-primaria);
-    box-shadow: 0 0 40px rgba(37, 211, 102, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
 }
 
 .step .icon {
     font-size: 3rem;
-    color: var(--cor-primaria);
-    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
 }
 
-.step h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+#para-quem-e {
+    padding: 80px 0;
+    background-color: var(--dark-bg);
 }
 
-.step p {
-    color: var(--cor-texto-secundario);
-    font-size: 0.95rem;
-}
-
-/* === SEÇÃO FINAL DE CTA === */
 .cta-section {
-    background-color: rgba(37, 211, 102, 0.05); /* Fundo levemente esverdeado */
-    border-radius: 20px;
-    margin: 80px auto;
-    padding: 60px;
-    max-width: 900px;
+    background-color: var(--light-bg);
+    text-align: center;
+    padding: 80px 0;
 }
 
-/* === RODAPÉ === */
+.cta-section p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
 footer {
+    background-color: #000;
     text-align: center;
-    padding: 30px 0;
-    color: var(--cor-texto-secundario);
+    padding: 20px 0;
     font-size: 0.9rem;
-    border-top: 1px solid var(--borda-cartao);
-    margin-top: 40px;
+    border-top: 1px solid #333;
+}
+
+@media(max-width: 768px) {
+    h1 {
+        font-size: 3rem;
+    }
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+    h2 {
+        font-size: 2.5rem;
+    }
+    .hero {
+        padding: 60px 0;
+    }
 }
